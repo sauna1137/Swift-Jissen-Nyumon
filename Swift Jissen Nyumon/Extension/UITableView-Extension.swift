@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-
 extension NSObjectProtocol {
-
     static var className: String {
         return String(describing: self)
     }
