@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.registerCustomCell(HomeTableViewCell.self)
     }
 }
 
@@ -32,7 +32,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCustomCell(with: HomeTableViewCell.self)
 
         cell.titleLabel.text = HomeModel.homeTableViewTitlesArray[indexPath.row]
 
@@ -43,7 +43,7 @@ extension HomeViewController: UITableViewDataSource {
         let detailVC = UIStoryboard.detailVC
         detailVC.title = HomeModel.homeTableViewTitlesArray[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
