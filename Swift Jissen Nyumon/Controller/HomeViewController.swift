@@ -38,4 +38,12 @@ extension HomeViewController: UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard.detailVC
+        detailVC.title = HomeModel.homeTableViewTitlesArray[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
