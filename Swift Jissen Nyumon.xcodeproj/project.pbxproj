@@ -16,6 +16,9 @@
 		8ADAC395274C9E6A00C3AD12 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC394274C9E6A00C3AD12 /* HomeModel.swift */; };
 		8ADAC399274C9F4F00C3AD12 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC397274C9F4F00C3AD12 /* HomeTableViewCell.swift */; };
 		8ADAC39A274C9F4F00C3AD12 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */; };
+		8ADAC39D274CA4F800C3AD12 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC39C274CA4F800C3AD12 /* Detail.storyboard */; };
+		8ADAC39F274CA60600C3AD12 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC39E274CA60600C3AD12 /* DetailViewController.swift */; };
+		8ADAC3A2274CA64500C3AD12 /* UIStoryboard-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC3A1274CA64500C3AD12 /* UIStoryboard-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		8ADAC394274C9E6A00C3AD12 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		8ADAC397274C9F4F00C3AD12 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		8ADAC39C274CA4F800C3AD12 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		8ADAC39E274CA60600C3AD12 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8ADAC3A1274CA64500C3AD12 /* UIStoryboard-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 				8ADAC390274C9D3800C3AD12 /* Model */,
 				8ADAC391274C9D3F00C3AD12 /* View */,
 				8ADAC38F274C9D2700C3AD12 /* Controller */,
+				8ADAC3A0274CA62600C3AD12 /* Extension */,
 				8ADAC382274C9CB500C3AD12 /* Assets.xcassets */,
 				8ADAC384274C9CB500C3AD12 /* LaunchScreen.storyboard */,
 				8ADAC387274C9CB500C3AD12 /* Info.plist */,
@@ -78,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAC38D274C9D2200C3AD12 /* HomeViewController.swift */,
+				8ADAC39E274CA60600C3AD12 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAC392274C9D5C00C3AD12 /* Home.storyboard */,
+				8ADAC39C274CA4F800C3AD12 /* Detail.storyboard */,
 				8ADAC396274C9ECD00C3AD12 /* XIB */,
 			);
 			path = View;
@@ -114,6 +123,14 @@
 				8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8ADAC3A0274CA62600C3AD12 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC3A1274CA64500C3AD12 /* UIStoryboard-Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +194,7 @@
 				8ADAC393274C9D5C00C3AD12 /* Home.storyboard in Resources */,
 				8ADAC386274C9CB500C3AD12 /* LaunchScreen.storyboard in Resources */,
 				8ADAC39A274C9F4F00C3AD12 /* HomeTableViewCell.xib in Resources */,
+				8ADAC39D274CA4F800C3AD12 /* Detail.storyboard in Resources */,
 				8ADAC383274C9CB500C3AD12 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +209,8 @@
 				8ADAC395274C9E6A00C3AD12 /* HomeModel.swift in Sources */,
 				8ADAC399274C9F4F00C3AD12 /* HomeTableViewCell.swift in Sources */,
 				8ADAC37A274C9CB300C3AD12 /* AppDelegate.swift in Sources */,
+				8ADAC3A2274CA64500C3AD12 /* UIStoryboard-Extension.swift in Sources */,
+				8ADAC39F274CA60600C3AD12 /* DetailViewController.swift in Sources */,
 				8ADAC37C274C9CB300C3AD12 /* SceneDelegate.swift in Sources */,
 				8ADAC38E274C9D2200C3AD12 /* HomeViewController.swift in Sources */,
 			);
