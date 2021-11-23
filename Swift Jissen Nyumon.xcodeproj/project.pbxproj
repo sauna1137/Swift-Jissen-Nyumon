@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		8ADAC37A274C9CB300C3AD12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */; };
 		8ADAC37C274C9CB300C3AD12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */; };
-		8ADAC37E274C9CB300C3AD12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC37D274C9CB300C3AD12 /* ViewController.swift */; };
-		8ADAC381274C9CB300C3AD12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC37F274C9CB300C3AD12 /* Main.storyboard */; };
 		8ADAC383274C9CB500C3AD12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC382274C9CB500C3AD12 /* Assets.xcassets */; };
 		8ADAC386274C9CB500C3AD12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC384274C9CB500C3AD12 /* LaunchScreen.storyboard */; };
+		8ADAC38E274C9D2200C3AD12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC38D274C9D2200C3AD12 /* HomeViewController.swift */; };
+		8ADAC393274C9D5C00C3AD12 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC392274C9D5C00C3AD12 /* Home.storyboard */; };
+		8ADAC395274C9E6A00C3AD12 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC394274C9E6A00C3AD12 /* HomeModel.swift */; };
+		8ADAC399274C9F4F00C3AD12 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC397274C9F4F00C3AD12 /* HomeTableViewCell.swift */; };
+		8ADAC39A274C9F4F00C3AD12 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8ADAC376274C9CB300C3AD12 /* Swift Jissen Nyumon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Jissen Nyumon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8ADAC37D274C9CB300C3AD12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8ADAC380274C9CB300C3AD12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8ADAC382274C9CB500C3AD12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADAC385274C9CB500C3AD12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ADAC387274C9CB500C3AD12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ADAC38D274C9D2200C3AD12 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8ADAC392274C9D5C00C3AD12 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		8ADAC394274C9E6A00C3AD12 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		8ADAC397274C9F4F00C3AD12 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,56 @@
 			children = (
 				8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */,
 				8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */,
-				8ADAC37D274C9CB300C3AD12 /* ViewController.swift */,
-				8ADAC37F274C9CB300C3AD12 /* Main.storyboard */,
+				8ADAC390274C9D3800C3AD12 /* Model */,
+				8ADAC391274C9D3F00C3AD12 /* View */,
+				8ADAC38F274C9D2700C3AD12 /* Controller */,
 				8ADAC382274C9CB500C3AD12 /* Assets.xcassets */,
 				8ADAC384274C9CB500C3AD12 /* LaunchScreen.storyboard */,
 				8ADAC387274C9CB500C3AD12 /* Info.plist */,
 			);
 			path = "Swift Jissen Nyumon";
+			sourceTree = "<group>";
+		};
+		8ADAC38F274C9D2700C3AD12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC38D274C9D2200C3AD12 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8ADAC390274C9D3800C3AD12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC394274C9E6A00C3AD12 /* HomeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8ADAC391274C9D3F00C3AD12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC392274C9D5C00C3AD12 /* Home.storyboard */,
+				8ADAC396274C9ECD00C3AD12 /* XIB */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8ADAC396274C9ECD00C3AD12 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC39B274C9F6A00C3AD12 /* Home */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		8ADAC39B274C9F6A00C3AD12 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8ADAC397274C9F4F00C3AD12 /* HomeTableViewCell.swift */,
+				8ADAC398274C9F4F00C3AD12 /* HomeTableViewCell.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +174,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ADAC393274C9D5C00C3AD12 /* Home.storyboard in Resources */,
 				8ADAC386274C9CB500C3AD12 /* LaunchScreen.storyboard in Resources */,
+				8ADAC39A274C9F4F00C3AD12 /* HomeTableViewCell.xib in Resources */,
 				8ADAC383274C9CB500C3AD12 /* Assets.xcassets in Resources */,
-				8ADAC381274C9CB300C3AD12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ADAC37E274C9CB300C3AD12 /* ViewController.swift in Sources */,
+				8ADAC395274C9E6A00C3AD12 /* HomeModel.swift in Sources */,
+				8ADAC399274C9F4F00C3AD12 /* HomeTableViewCell.swift in Sources */,
 				8ADAC37A274C9CB300C3AD12 /* AppDelegate.swift in Sources */,
 				8ADAC37C274C9CB300C3AD12 /* SceneDelegate.swift in Sources */,
+				8ADAC38E274C9D2200C3AD12 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8ADAC37F274C9CB300C3AD12 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8ADAC380274C9CB300C3AD12 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8ADAC384274C9CB500C3AD12 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +338,7 @@
 				INFOPLIST_FILE = "Swift Jissen Nyumon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,7 +350,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,7 +366,7 @@
 				INFOPLIST_FILE = "Swift Jissen Nyumon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -334,7 +378,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
