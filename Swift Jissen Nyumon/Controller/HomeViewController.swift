@@ -42,7 +42,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard.detailVC
         detailVC.title = HomeModel.homeTableViewTitlesArray[indexPath.row]
-        detailVC.textView.text = HomeModel.contentsArray[indexPath.row]
+        detailVC.textViewString = HomeModel.contentsArray[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
 
         self.navigationController?.pushViewController(detailVC, animated: true)
