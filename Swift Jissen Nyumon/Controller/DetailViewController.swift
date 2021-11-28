@@ -9,12 +9,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
-    var labelsText = ""
+    @IBOutlet weak var textView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = labelsText
+
     }
 
 }
