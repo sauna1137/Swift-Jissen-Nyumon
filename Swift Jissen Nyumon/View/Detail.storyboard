@@ -16,25 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvm-aE-lxd">
-                                <rect key="frame" x="40" y="84" width="334" height="738"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-h4-JxU">
+                                <rect key="frame" x="30" y="74" width="354" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pvm-aE-lxd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="Ja8-tJ-nob"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pvm-aE-lxd" secondAttribute="trailing" constant="40" id="UJZ-Ny-YsP"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="pvm-aE-lxd" secondAttribute="bottom" constant="40" id="qVa-q3-zJg"/>
-                            <constraint firstItem="pvm-aE-lxd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="xaT-b3-Ec8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="h0U-h4-JxU" secondAttribute="trailing" constant="30" id="FPQ-g3-d5x"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="h0U-h4-JxU" secondAttribute="bottom" constant="30" id="HZh-xX-bjj"/>
+                            <constraint firstItem="h0U-h4-JxU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="RIi-Yp-ehJ"/>
+                            <constraint firstItem="h0U-h4-JxU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="sDY-gv-sHs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vhc-8P-NYY"/>
                     <connections>
-                        <outlet property="label" destination="pvm-aE-lxd" id="T2h-tR-o07"/>
+                        <outlet property="textView" destination="h0U-h4-JxU" id="cD3-Za-TJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -43,6 +44,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
