@@ -125,4 +125,156 @@ class HomeModel {
     ]
 
 
+    func forText() {
+
+        //配列
+        var strings = ["abc","123","def"]
+        let strings1 = strings[0] // "abc"
+        let strings3 = strings[2] // "def"
+
+        strings[3] = "456"
+        //strings = ["abc","123","def","456"]
+
+        var integers = [1,2,3]
+        integers.append(4) // [1,2,3,4]
+        integers.insert(0, at: 0) // [0,1,2,3,4]
+
+        integers.remove(at: 2) // [0,1,3,4]
+        integers.removeLast() // [0,1,3]
+        integers.removeAll() // []
+
+        //辞書型
+        let dicrionaly = ["a": 1, "b": 2] // [String: Int]型
+        let dic: [String: Int] = [:]
+
+        // valueに配列を入れる[String: [Int]]とすることも、[Stiring: [String: Int]]とすることもできる
+        let dic2 = ["even": [2,4,6,8], "odd": [1,3,5,7]]
+
+        dic2["even"] != nil // true
+        dic2["oodd"] != nil // false
+
+        //　更新
+        var dic3 = ["key": 1]
+        dic3["key"] = 2
+        dic3 // ["key": 2]
+
+        // 追加
+        var dic4 = ["key": 1]
+        dic4["key2"] = 2
+        dic4 // ["key": 1,"key2": 2]
+
+        //削除
+        var dic5 = ["key": 1]
+        dic5["key"] = nil
+        dic5 // [:]
+
+        //範囲型
+        let range = 1..<4 // CountableRange(1..<4)
+
+        for value in range {
+            print(value) // 1 2 3
+        }
+
+        let range2 = 1...4 // CountableClosedRange(1...4)
+
+        for value in range {
+            print(value) // 1 2 3 4
+        }
+
+        let floatRange: Range<Float> = 1..<3 //Range<Float型>
+        floatRange.upperBound // 3
+        floatRange.lowerBound // 1
+
+        let rangeThrough = ...5.8
+        rangeThrough.upperBound //5.8
+
+        rangeThrough.contains(3.7) // true
+        rangeThrough.contains(6.5) // false
+
+        //Character型
+        let string = "a" // String型
+        let character: Character = "a" // Character型
+
+        let string2 = "abc" // String型
+        let startIndex = string.startIndex // String.Index型
+        let endIndex = string.endIndex // String.Index型
+
+        let string4 = "abc"
+        let character2 = string[string.startIndex] // "a" (Character型)
+        let bIndex = string4.index(string4.startIndex, offsetBy: 1)
+        let b = string[bIndex] // "b"
+
+        let cIndex = string4.index(string4.endIndex, offsetBy: -1)
+        let c = string4[cIndex] // "c"
+
+        //文字数のカウント
+        string4.count
+
+        //要素の列挙
+        for character in string4 {
+            print(character) // a b c
+        }
+
+
+        //Sequenceプロトコル　for-in文を用いてその要素に順次アクセスします　要素への順次アクセス
+
+        // forEach(_:) 要素に対して順次アクセス
+        let array = [1,2,3,4,5,6]
+        var enumerated = [] as [Int]
+        array.forEach { element in
+            enumerated.append(element)
+        }
+        enumerated // [1,2,3,4,5,6]
+
+
+        //filter(_:)　指定した条件を満たす要素のみ含み新しいシーケンスを返す　要素を絞り込む
+        let filtered = array.filter { element in
+            element % 2 == 0
+        }
+        filtered // [2,4,6]
+
+
+        //map(_:) 要素を変換　全ての要素を特定の処理を用いて変換　要素を変換する処理は引数のクロージャを用いて指定する
+        let doubled = array.map { element in
+            element * 2
+        }
+        doubled // [2,4,6,8,10,12]
+
+        let converted = array.map { element in
+            String(element)
+        }
+
+        converted // ["1","2","3","4"...]
+
+
+        //flatMap(_:) 要素をシーケンスに変換して一つのシーケンスに連結する
+        let a = [1,4,7]
+        let b2 = a.flatMap { value in
+            [value, value + 1]
+        }
+        b2 // [1,2,4,5,7,8]
+        //同じ処理をmapで行ったら   [[1,2],[4,5],[7,8]]
+
+
+        //compactMap(_:) 要素を失敗する可能性のある処理を用いて変換する　変換できない値を無視できる
+        let strings2 = ["abc", "123", "def", "456"]
+        let integers2 = strings2.compactMap { value in
+            Int(value)
+        }
+        integers2 // [123,456]
+
+
+        //reduce(_:_:) 要素を一つにまとめる　第一引数に初期値を指定し、第二引数に要素を結果に反映する処理を指定します。
+        let sum = array.reduce(0) { partialResult, element in
+            partialResult + element
+        }
+        sum // 21    0に1,2,3,4,5,6を足していく
+
+        let concat = array.reduce("") { partialResult, element in
+            partialResult + String(element)
+        }
+        concat // "123456"
+
+    }
+
 }
