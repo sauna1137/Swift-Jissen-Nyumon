@@ -13,6 +13,7 @@ class HomeModel {
 
     static let contentsArray = [
 
+        // MARK: - 変数と定数と式
     """
     let a = 123 \n type(of: a) // Int.Type
     クロージャ { 引数 in 戻り値を返す式 }
@@ -22,6 +23,7 @@ class HomeModel {
 
     ,
 
+    // MARK: - 基本的な型
     """
             // 基本的な型
             let none = Optional<Int>.none
@@ -120,13 +122,11 @@ class HomeModel {
             //Int型とString型がEquatableプロトコルとしてComparableプロトコルという共通のプロトコルに準拠することで実現している
             //Any型はEquatableに準拠していないため比較できない
             //Comparableプロトコルは大小関係を検証するためのプロトコル。Int,Float,Double,Stringは準拠しているがBool,Anyは準拠していない。
+    """,
+
+
+    // MARK: - コレクションを表す型
     """
-
-    ]
-
-
-    func forText() {
-
         //配列
         var strings = ["abc","123","def"]
         let strings1 = strings[0] // "abc"
@@ -274,6 +274,18 @@ class HomeModel {
             partialResult + String(element)
         }
         concat // "123456"
+"""
+
+    // MARK: - 制御構文
+
+
+    ]
+
+
+    func forText() {
+
+        
+
 
     }
 
