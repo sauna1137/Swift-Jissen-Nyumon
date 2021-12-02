@@ -284,11 +284,42 @@ class HomeModel {
 
     func forText() {
 
-        if let constant = Optional<Int> {
+        // if let文　値の有無による分岐
+        let optInt: Int? = 3
+        let optStr: String? = "abc"
+
+        if let constant = optInt {
             //　値が存在する場合に実行する分
+            print(constant)
         } else {
             //　値が存在しない時に実行される文
         }
+
+        if let a = optInt, let b = optStr {
+            print("値は\(a)と\(b)です")
+        } else {
+            print("どちらかの値が存在しない")
+        }
+
+
+        // guard文　条件不成立時に早期退出する分岐
+        guard optStr == "abc" else {
+            //　条件式がfalseの場合に実行される文
+            return
+        }
+
+        func printIntPositive(_ a: Int) {
+            guard a > 0 else {
+                return // returnがないとコンパイルエラー
+            }
+
+            // guard文以降では　a > 0が保証される
+            print(a)
+        }
+
+        printIntPositive(4) // 4
+
+
 
 
     }
