@@ -9,7 +9,7 @@ import Foundation
 
 class HomeModel {
 
-    static let homeTableViewTitlesArray = ["変数と定数と式", "基本的な型","コレクションを表す型"]
+    static let homeTableViewTitlesArray = ["変数と定数と式", "基本的な型","コレクションを表す型","制御構文"]
 
     static let contentsArray = [
 
@@ -284,7 +284,11 @@ class HomeModel {
 
     func forText() {
 
-        
+        if let constant = Optional<Int> {
+            //　値が存在する場合に実行する分
+        } else {
+            //　値が存在しない時に実行される文
+        }
 
 
     }
