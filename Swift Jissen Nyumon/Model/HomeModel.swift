@@ -318,10 +318,99 @@ class HomeModel {
         }
 
         printIntPositive(4) // 4
+        // guard文、条件で早期退出するコードはguard文を実装した方がシンプルとなります。
 
 
+        // switch文 複数のパターンマッチによる分岐
+        let a = 1
+
+        switch a {
+        case Int.min..<0:
+            print("aは負の値")
+        case 1..<Int.max:
+            print("aは世の値")
+        default:
+            print("aは0です")
+        }
+
+        //ケースの網羅性チェック
+        enum SomeEnum {
+            case foo
+            case bar
+            case baz
+        }
+
+        let foo = SomeEnum.foo
+
+        switch foo {
+        case .foo:
+            print("foo")
+        case .bar:
+            print("bar")
+        case .baz:
+            print("baz")
+        }
+
+        let baz = SomeEnum.baz
+        switch baz {
+        case .foo:
+            print("foo")
+        case .bar:
+            print("bar")
+        default: print("Default")
+        }
+
+        //whereキーワード　ケースにマッチする条件を追加できます
+        let optionalA: Int? = 1
+
+        switch optionalA {
+        case .some(let a) where a > 10:
+            print("10より大きい値\(a)が存在します")
+        default: print("値が存在しない、若しくは10以下です")
+        }
+
+        let a3 = 1
+
+        switch a3 {
+        case 1:
+            print("実行する")
+            break
+            print("実行されない") //breakで実行されない
+        default: break
+        }
+
+        //ラベル名 switchが入れ子になっている場合などbreakの対象となるswitch文を明示する必要がある
+        let value = 0 as Any
+
+    outerSwitch: switch value {
+    case let int as Int:
+        let description: String
+        switch int {
+        case 1, 3, 5, 7, 9:
+            description = "奇数"
+        case 2, 4, 6, 8, 10:
+            description = "偶数"
+        default: print("対象外の数字です")
+            break outerSwitch
+        }
+        print("値は\(description)")
+    default: print("対象外の型です")
+    }
+
+        // fallthrough文　switch文のケース実行を終了し、次のケースを実行する制御構文 fallthroughキーワードのみで構成される
+        let a4 = 1
+
+        switch a4 {
+        case 1:print("case 1")
+            fallthrough
+        case 2: print("case 2")
+        default: print("default")
+        }
+
+        //実行結果　case 1 case 2
+
+        
 
 
     }
-
 }
