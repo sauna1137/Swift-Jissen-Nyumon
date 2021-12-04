@@ -24,7 +24,7 @@ class HomeModel {
     ,
 
     // MARK: - 基本的な型
-    """
+            """
             // 基本的な型
             let none = Optional<Int>.none
             print(".none", none as Any) // nil
@@ -40,7 +40,7 @@ class HomeModel {
 
             let d: Int? = 1
             let e: Int? = 2
-    //        let f = d + e  これはコンパイルエラーなのでアンラップしないと使用できない　そこで下記3種のアンラップ法がある
+            //        let f = d + e  これはコンパイルエラーなのでアンラップしないと使用できない　そこで下記3種のアンラップ法がある
 
             // オプショナルバインディング
             if let newD = d {
@@ -122,11 +122,11 @@ class HomeModel {
             //Int型とString型がEquatableプロトコルとしてComparableプロトコルという共通のプロトコルに準拠することで実現している
             //Any型はEquatableに準拠していないため比較できない
             //Comparableプロトコルは大小関係を検証するためのプロトコル。Int,Float,Double,Stringは準拠しているがBool,Anyは準拠していない。
-    """,
+            """,
 
 
     // MARK: - コレクションを表す型
-    """
+        """
         //配列
         var strings = ["abc","123","def"]
         let strings1 = strings[0] // "abc"
@@ -274,9 +274,331 @@ class HomeModel {
             partialResult + String(element)
         }
         concat // "123456"
-"""
+
+        """,
 
     // MARK: - 制御構文
+
+            """
+
+            // if let文　値の有無による分岐
+            let optInt: Int? = 3
+            let optStr: String? = "abc"
+
+            if let constant = optInt {
+                //　値が存在する場合に実行する分
+                print(constant)
+            } else {
+                //　値が存在しない時に実行される文
+            }
+
+            if let a = optInt, let b = optStr {
+                print("値はa,bです")
+            } else {
+                print("どちらかの値が存在しない")
+            }
+
+
+            // guard文　条件不成立時に早期退出する分岐
+            guard optStr == "abc" else {
+                //　条件式がfalseの場合に実行される文
+                return
+            }
+
+            func printIntPositive(_ a: Int) {
+                guard a > 0 else {
+                    return // returnがないとコンパイルエラー
+                }
+
+                // guard文以降では　a > 0が保証される
+                print(a)
+            }
+
+            printIntPositive(4) // 4
+            // guard文、条件で早期退出するコードはguard文を実装した方がシンプルとなります。
+
+
+            // switch文 複数のパターンマッチによる分岐
+            let a = 1
+
+            switch a {
+            case Int.min..<0:
+                print("aは負の値")
+            case 1..<Int.max:
+                print("aは世の値")
+            default:
+                print("aは0です")
+            }
+
+            //ケースの網羅性チェック
+            enum SomeEnum {
+                case foo
+                case bar
+                case baz
+            }
+
+            let foo = SomeEnum.foo
+
+            switch foo {
+            case .foo:
+                print("foo")
+            case .bar:
+                print("bar")
+            case .baz:
+                print("baz")
+            }
+
+            let baz = SomeEnum.baz
+            switch baz {
+            case .foo:
+                print("foo")
+            case .bar:
+                print("bar")
+            default: print("Default")
+            }
+
+            //whereキーワード　ケースにマッチする条件を追加できます
+            let optionalA: Int? = 1
+
+            switch optionalA {
+            case .some(let a) where a > 10:
+                print("10より大きい値aが存在します")
+            default: print("値が存在しない、若しくは10以下です")
+            }
+
+            let a3 = 1
+
+            switch a3 {
+            case 1:
+                print("実行する")
+                break
+                print("実行されない") //breakで実行されない
+            default: break
+            }
+
+            //ラベル名 switchが入れ子になっている場合などbreakの対象となるswitch文を明示する必要がある
+            let value = 0 as Any
+
+            outerSwitch: switch value {
+            case let int as Int:
+            let description: String
+            switch int {
+            case 1, 3, 5, 7, 9:
+                description = "奇数"
+            case 2, 4, 6, 8, 10:
+                description = "偶数"
+            default: print("対象外の数字です")
+                break outerSwitch
+            }
+            print("値は")
+            default: print("対象外の型です")
+            }
+
+            // fallthrough文　switch文のケース実行を終了し、次のケースを実行する制御構文 fallthroughキーワードのみで構成される
+            let a4 = 1
+
+            switch a4 {
+            case 1:print("case 1")
+                fallthrough
+            case 2: print("case 2")
+            default: print("default")
+            }
+
+            //実行結果　case 1 case 2
+
+
+            //繰り返し
+            let array = [1,2,3]
+            for element in array {
+                print(element)  // 1 2 3
+            }
+
+            let dictionary = ["a":1, "b": 2]
+            for (key, value) in dictionary {
+                print("key: , Value:") // key: b,value2  key: a, Value: 1
+            }
+
+            //while 継続条件による繰り返し
+            var a5 = 1
+            while a < 4 {
+                print(a5) //1 2 3
+                a5 += 1
+            }
+
+            // repeat-while文　初回実行を保証する繰り返し
+            while a5 < 1 {
+                print(a5) // printなし
+                a5 += 1
+            }
+
+            repeat {
+                print(a5) // 1 一回は必ず実行される
+                a5 += 1
+            } while a < 1
+
+
+            // break文　繰り返しの終了
+            var containsTwo = false
+            let array2 = [1,2,3]
+
+            for element in array {
+                if element == 2 {
+                    containsTwo = true
+                    break
+                }
+                print("element")
+            }
+            print("containtsTwo:") // element:1 containsTwo: true
+
+            // continue文　繰り返しの終了
+            var odds = [Int]()
+            let array3 = [1, 2, 3]
+
+            for element in array3 {
+                if element % 2 == 1 {
+                    odds.append(element)
+                    continue  // continueがあることで繰り返しに戻る、element % 2 == 1 でない時はcontinueが実行されないのでeven: 2が実行される
+                }
+                print("even: ")
+            }
+            print("odds:")
+
+            // even: 2 odds: [1,3]
+
+            //ラベル　breakやcontinue文の制御対象の指定
+            label: for element in [1, 2, 3] {
+            for nestedElement in [1 ,2, 3] {
+                print("element: , nestedElement: ")
+                break label
+               }
+            }
+
+            //element: 1, nestedElement: 1
+
+            //遅延実行 defer スコープ退出時の処理
+            var count = 0
+
+            func someFunc() -> Int {
+                defer {
+                    count += 1 //スコープ退出時に処理される
+                }
+                return count
+            }
+
+            someFunc() // 0
+            print(count) // 1
+
+
+            //パターンマッチ 値のもつ構造や性質を表現するパターンという概念がある。値が特定のパターンに合致するか検査することをパターンマッチという
+
+            //式パターン 演算子による評価
+            let integ = 9
+
+            switch integ {
+            case 6: print("match: 6")
+            case 5...10: print("match5...10")
+            default: print("default")
+            }
+
+            //バリューバインディングパターン 値の代入に伴う評価
+            let val = 3
+
+            switch val {
+            case let matchVal: print(matchVal) // 3
+            }
+
+
+            // オプショナルパターン　Optional<Wrapped>型の値の有無を評価
+            let optA = Optional(4)
+
+            switch optA {
+            case let a?: print(a) // 4
+            default: print("nil")
+            }
+
+
+            // 列挙型ケースパターン ケースとの一致の評価
+            enum Hemisphere {
+                case northern
+                case southern
+            }
+
+            let hemisphere = Hemisphere.northern
+
+            switch hemisphere {
+            case .northern: print("match .nor") // match .nor
+            case .southern: print("match .sou")
+            }
+
+            enum Color {
+                case rgb(Int, Int, Int)
+                case cmyk(Int, Int, Int, Int)
+            }
+
+            let color = Color.rgb(100, 200, 255)
+
+            switch color {
+            case .rgb(let r, let g, let b): print(".rgb r g b") //.rgb 100 200 255
+            case .cmyk(let c, let m, let y, let k): print("cmyk")
+            }
+
+
+            // is演算子による型キャスティングパターン　型の判定による評価
+            let any: Any = 1
+            switch any {
+            case is String: print("match: String")
+            case is Int: print("match: Int") // match Int
+            default: print("default")
+            }
+
+
+            // as演算子による型キャスティングパターン
+            let any2: Any = 1
+
+            switch any2 {
+            case let string as String: print("match String")
+            case let int as Int: print("match Int")
+            default: print("default")
+            }
+
+
+            // if文
+            let val2 = 8
+            if case 1...10 = val2 {
+                print("1...10の値です")
+            }
+
+            // guard文
+            func someFunc2() {
+                let val: Int = 9
+                guard case 1...10 = val else {
+                    return
+                }
+                print("1~10の値です")
+            }
+
+
+            // for in文
+            let array6 = [1,2,3,4]
+            for case 2...3 in array {
+                print("2~3の値")
+            }
+            //2~3の値 2~3の値　2回出力
+
+            // while
+            var nextVal = Optional(1)
+            while case let value? = nextVal {  // nextValがnilにならない(nextValが3を超えない)間は value1 ,2 , 3と出力
+                print("val")
+
+                if value >= 3 {
+                    nextVal = nil
+                } else {
+                    nextVal = value + 1
+                }
+            }
+
+
+           """
 
 
     ]
@@ -284,132 +606,6 @@ class HomeModel {
 
     func forText() {
 
-        // if let文　値の有無による分岐
-        let optInt: Int? = 3
-        let optStr: String? = "abc"
-
-        if let constant = optInt {
-            //　値が存在する場合に実行する分
-            print(constant)
-        } else {
-            //　値が存在しない時に実行される文
-        }
-
-        if let a = optInt, let b = optStr {
-            print("値は\(a)と\(b)です")
-        } else {
-            print("どちらかの値が存在しない")
-        }
-
-
-        // guard文　条件不成立時に早期退出する分岐
-        guard optStr == "abc" else {
-            //　条件式がfalseの場合に実行される文
-            return
-        }
-
-        func printIntPositive(_ a: Int) {
-            guard a > 0 else {
-                return // returnがないとコンパイルエラー
-            }
-
-            // guard文以降では　a > 0が保証される
-            print(a)
-        }
-
-        printIntPositive(4) // 4
-        // guard文、条件で早期退出するコードはguard文を実装した方がシンプルとなります。
-
-
-        // switch文 複数のパターンマッチによる分岐
-        let a = 1
-
-        switch a {
-        case Int.min..<0:
-            print("aは負の値")
-        case 1..<Int.max:
-            print("aは世の値")
-        default:
-            print("aは0です")
-        }
-
-        //ケースの網羅性チェック
-        enum SomeEnum {
-            case foo
-            case bar
-            case baz
-        }
-
-        let foo = SomeEnum.foo
-
-        switch foo {
-        case .foo:
-            print("foo")
-        case .bar:
-            print("bar")
-        case .baz:
-            print("baz")
-        }
-
-        let baz = SomeEnum.baz
-        switch baz {
-        case .foo:
-            print("foo")
-        case .bar:
-            print("bar")
-        default: print("Default")
-        }
-
-        //whereキーワード　ケースにマッチする条件を追加できます
-        let optionalA: Int? = 1
-
-        switch optionalA {
-        case .some(let a) where a > 10:
-            print("10より大きい値\(a)が存在します")
-        default: print("値が存在しない、若しくは10以下です")
-        }
-
-        let a3 = 1
-
-        switch a3 {
-        case 1:
-            print("実行する")
-            break
-            print("実行されない") //breakで実行されない
-        default: break
-        }
-
-        //ラベル名 switchが入れ子になっている場合などbreakの対象となるswitch文を明示する必要がある
-        let value = 0 as Any
-
-    outerSwitch: switch value {
-    case let int as Int:
-        let description: String
-        switch int {
-        case 1, 3, 5, 7, 9:
-            description = "奇数"
-        case 2, 4, 6, 8, 10:
-            description = "偶数"
-        default: print("対象外の数字です")
-            break outerSwitch
-        }
-        print("値は\(description)")
-    default: print("対象外の型です")
-    }
-
-        // fallthrough文　switch文のケース実行を終了し、次のケースを実行する制御構文 fallthroughキーワードのみで構成される
-        let a4 = 1
-
-        switch a4 {
-        case 1:print("case 1")
-            fallthrough
-        case 2: print("case 2")
-        default: print("default")
-        }
-
-        //実行結果　case 1 case 2
-
-        
 
 
     }
