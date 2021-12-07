@@ -187,9 +187,9 @@ func enqueue(operation: @escaping () -> Void) {   //operationという引数名�
 
 enqueue { print("excuted1") } // enqueueという関数にprint("excuted")という引数、戻り値なしの処理を渡して実行 queueにprint("excuted")が追加される
 enqueue { print("excuted2") } //　同上の処理  print("excuted")はescapingにより関数のスコープ外で保持される
-print(queue) // [(Function), (Function)]
+print(queue) // [(Function), (Function)] 関数の配列
 
-queue.forEach { $0() } //引数なしの戻り値なしの配列の0番目の処理をそれぞれ実行 　結果: excuted1 excuted2
+queue.forEach { $0() } //引数,戻り値なしの配列の0番目の処理をそれぞれアクセス 　結果: excuted1 excuted2
 
 
 //escaping属性が指定されていないクロージャは関数のスコープ外で保持できない クロージャの実行は関数のスコープ内で行わなければならない
