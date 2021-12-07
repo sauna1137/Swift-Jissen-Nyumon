@@ -72,6 +72,27 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>katano_kosei_yoso (Playground) 1.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>katano_kosei_yoso (Playground) 2.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>katano_kosei_yoso (Playground).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>kihonteki_na_kata (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
