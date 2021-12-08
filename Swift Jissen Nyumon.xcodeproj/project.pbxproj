@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		8A9B7966275B48A8004542ED /* Kansu_to_closure.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Kansu_to_closure.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A9B799D275FA4DD004542ED /* katano_kosei_yoso.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = katano_kosei_yoso.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8A9B79A02760FB95004542ED /* Kata_no_shurui.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Kata_no_shurui.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8ADAC376274C9CB300C3AD12 /* Swift Jissen Nyumon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Jissen Nyumon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 			children = (
 				8A9B7966275B48A8004542ED /* Kansu_to_closure.playground */,
 				8A9B799D275FA4DD004542ED /* katano_kosei_yoso.playground */,
+				8A9B79A02760FB95004542ED /* Kata_no_shurui.playground */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
