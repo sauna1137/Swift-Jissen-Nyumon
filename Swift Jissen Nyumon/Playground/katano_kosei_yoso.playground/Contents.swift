@@ -56,14 +56,14 @@ struct SomeStruct {
 
 struct Greeting3 {
     var to = "yosuke" {
-    willSet {
-        print("willSet: (to; \(self.to), newValue: \(newValue))")
-    }
+        willSet {
+            print("willSet: (to; \(self.to), newValue: \(newValue))")
+        }
 
-    didSet {
-        print("didSet: \(self.to)")
+        didSet {
+            print("didSet: \(self.to)")
+        }
     }
-  }
 }
 
 var greeting5 = Greeting3()
@@ -167,4 +167,309 @@ struct Temprature2 {
     }
 }
 
-//セッタの省略
+
+//セッタの省略　セッタが存在しない場合はgetと{}を省略できる
+struct Greeting7 {
+    var to = "yusuke"
+    var body: String {
+        return "Hello,\(to)!"
+    }
+}
+
+let greeting7 = Greeting7()
+greeting7.body //Hello,yusuke
+
+struct Greeting8 {
+    var to = "yusuke"
+    var body: String {
+        return "Hello,\(to)!"
+    }
+}
+
+let greeting = Greeting8()
+//greeting7.body = "hi" 　セッタが定義されていないためコンパイルエラー
+
+
+
+//イニシャライザ　　インスタンスを初期化する　引数と初期化に関する処理を定義
+struct Greeting9 {
+    let to: String
+    var body: String {
+        return "hello, \(to)!"
+    }
+
+    init(to: String) {
+        self.to = to
+    }
+}
+
+let greeting9 = Greeting9(to: "yosuke")
+let body = greeting9.body // hello, yosuke
+
+
+
+//失敗可能イニシャライザ　初期化できないケースに対応　init?
+struct Item {
+    let id: Int
+    let title: String
+
+    init?(dictionary: [String: Any]) {
+        guard let id = dictionary["id"] as? Int,
+              let title = dictionary["title"] as? String else {
+                  //このケースではidとtitleは未初期化のままでもコンパイル可能
+                  return nil
+              }
+        self.id = id
+        self.title = title
+    }
+}
+
+let dictionaries: [[String: Any]] = [
+    ["id": 1, "title": "abc"],
+    ["id": 2, "title": "def"],
+    ["title": "ght"],
+    ["id": 3, "title": "jkl"],
+]
+
+for dictionary in dictionaries {
+    if let item = Item(dictionary: dictionary) {
+        print(item)
+    } else {
+        print("エラー: 辞書\(dictionary)からItemを生成できませんでした")
+    }
+}
+//結果　Item(id: 1, title: "abc")
+//　Item(id: 2, title: "def")
+//　エラー: 辞書["title": "ght"]からItemを生成できませんでした
+//　Item(id: 3, title: "jkl")
+
+
+//デフォルト値の用意
+struct Item2 {
+    let name: String
+    let title: String
+
+    init(dictionary: [String: String]) {
+        name = dictionary["name"] ?? "noName"
+        title = dictionary["title"] ?? "noTitle"
+    }
+}
+
+
+
+//インスタンスメソッド　型のインスタンスに紐付いたメソッド
+struct SomeStruct3 {
+    var value = 0
+
+    func printValue() {
+        print("value: \(self.value)")
+    }
+}
+
+var someStruct3 = SomeStruct3()
+someStruct3.value = 1
+someStruct3.printValue() //value1
+
+var someStruct3_2 = SomeStruct3()
+someStruct3_2.value = 2
+someStruct3_2.printValue() //value2
+
+
+//スタティックメソッド　型自身に紐付くメソッド　メソッドの定義の先頭にstaticキーワードを追加する
+struct Greeting10 {
+    static var signature = "sent from iphone"
+    static func setSignature(withDeviceName deviceName: String) {
+        signature = "sent from \(deviceName)"
+    }
+
+    var to = "Yosuke Ishikawa"
+    var body: String {
+        return "Hello,\(to) \n \(Greeting10.signature)"
+    }
+}
+
+let greeting10 = Greeting10()
+print(greeting10.body)
+print("---")
+
+Greeting10.setSignature(withDeviceName: "Xperia")
+print(greeting10.body)
+
+//  Hello,Yosuke Ishikawa
+//  sent from iphone
+//  ---
+//  Hello,Yosuke Ishikawa
+//  sent from Xperia
+
+
+
+//オーバーロード　型が異なる同名のメソッドの定義　　異なる型の引数や戻り値を取る同名のメソッドを代入先の型に応じて実行するメソッド
+//引数によるオーバーロード
+struct Printer {
+    func put(_ value: String) {
+        print("string: \(value)")
+    }
+
+    func put(_ value: Int) {
+        print("int: \(value)")
+    }
+}
+
+let printer = Printer()
+printer.put("abc")  //string: abc
+printer.put(123)   //int: 123
+
+
+//戻り値によるオーバーロード
+struct ValueContainer {
+    let stringValue = "abc"
+    let intValue = 123
+
+    func getValue() -> String {
+        return stringValue
+    }
+
+    func getValue() -> Int {
+        return intValue
+    }
+}
+
+let valueContainer = ValueContainer()
+let string: String = valueContainer.getValue() // abc
+let int: Int = valueContainer.getValue() // 123
+
+
+
+//サブスクリプト　コレクションの要素へのアクセス 　外部引数名がデフォルトで_となる
+//　subscript(引数) -> 戻り値の型 {
+//    get {
+//        return文によって値を返す処理
+//    }
+//
+//    set {
+//        値を更新する処理
+//    }
+//　}
+
+//数列
+struct Progression {
+    var numbers: [Int]
+
+    subscript(index: Int) -> Int {
+        get {
+            return numbers[index]
+        }
+
+        set {
+            numbers[index] = newValue
+        }
+    }
+}
+
+var progression = Progression(numbers: [1,2,3])
+let element1 = progression[1]   // 2
+
+progression[1] = 4
+let element2 = progression[1]   //4
+
+
+//エクステンション　型を構成する要素を追加できる
+//メソッドの追加
+extension String {
+    func printSelf() {
+        print(self)
+    }
+}
+
+let string3 = "abc"
+string3.printSelf() // abc
+
+extension String{
+    var enclosedString: String {
+        return "[\(self)]"
+    }
+}
+let title = "重要".enclosedString + "今日はお休み" // "[重要]今日はお休み"
+
+
+import UIKit
+
+enum WebAPIError: Error {
+case connectionError(Error)
+case fatalError
+
+    var title: String {
+        switch self {
+        case .connectionError: return "通信エラー"
+        case .fatalError: return "致命的なエラー"
+        }
+    }
+
+    var message: String {
+        switch self {
+        case .connectionError(let underlyingError):
+            return underlyingError.localizedDescription + "再試行してください"
+        case .fatalError: return "サポート窓口に連絡してください"
+        }
+    }
+}
+
+extension UIAlertController {
+    convenience init(webAPIError: WebAPIError) {
+
+        //UIAlertControllerの指定イニシャライザ
+        self.init(title: webAPIError.title,
+                  message: webAPIError.message,
+                  preferredStyle: .alert)
+    }
+}
+
+let error = WebAPIError.fatalError
+let alertController = UIAlertController(webAPIError: error)
+
+
+
+//型のネスト　型の中に型を定義できる
+enum NewsFeedItemKind {
+    case a
+    case b
+    case c
+}
+
+struct NewsFeedItem {
+    let id: Int
+    let title: String
+    let type: NewsFeedItemKind
+}
+
+//上記は命名で縛っているに過ぎない
+
+//下記は型の中にネストして定義している
+struct NewsFeedItem2 {
+    enum Kind {
+        case a
+        case b
+        case c
+    }
+
+    let id: Int
+    let title: String
+    let kind: Kind
+
+    init(id: Int, title: String, kind: Kind) {
+        self.id = id
+        self.title = title
+        self.kind = kind
+    }
+}
+
+    let kind = NewsFeedItem2.Kind.a
+    let item = NewsFeedItem2(id: 1, title: "Table", kind: kind)
+
+switch item.kind {
+case .a: print("a")
+case .b: print("b")
+case .c: print("c")
+}    //　結果　a
+
+
