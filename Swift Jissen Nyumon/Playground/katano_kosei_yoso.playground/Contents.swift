@@ -187,6 +187,7 @@ struct Greeting8 {
 }
 
 let greeting = Greeting8()
+greeting.body // hello, yusuke
 //greeting7.body = "hi" 　セッタが定義されていないためコンパイルエラー
 
 
@@ -224,6 +225,12 @@ struct Item {
     }
 }
 
+var item = Item(dictionary: ["id" : 2, "title": "aaa"])
+var item2 = Item(dictionary: ["id" : 3,"afda": "aaa"])
+print(item?.id,item!.title) // Optional(2) aaa
+print(item2?.id,item2?.title)  // nil nil
+
+
 let dictionaries: [[String: Any]] = [
     ["id": 1, "title": "abc"],
     ["id": 2, "title": "def"],
@@ -255,6 +262,8 @@ struct Item2 {
     }
 }
 
+var item3 = Item2(dictionary: ["name" : "john"])
+print(item3.name,item3.title)   // john noTitle
 
 
 //インスタンスメソッド　型のインスタンスに紐付いたメソッド
@@ -464,9 +473,9 @@ struct NewsFeedItem2 {
 }
 
     let kind = NewsFeedItem2.Kind.a
-    let item = NewsFeedItem2(id: 1, title: "Table", kind: kind)
+    let item4 = NewsFeedItem2(id: 1, title: "Table", kind: kind)
 
-switch item.kind {
+switch item4.kind {
 case .a: print("a")
 case .b: print("b")
 case .c: print("c")
