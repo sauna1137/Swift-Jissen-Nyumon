@@ -6,16 +6,16 @@ import UIKit
 func double(_ x: Int) -> Int {
     return x * 2
 }
-
 double(3) // 6
+
 
 // 戻り値が不要な場合_に代入することで明示できるがエラーとなるので＠discardableResult属性を付与する
 @discardableResult
 func functionWithDiscaradable() -> String {
     return "discardable"
 }
-
 _ = functionWithDiscaradable()
+
 
 //外部引数名を省略したい場合
 func sum(_ int1: Int, _ int2: Int) -> Int {
@@ -24,11 +24,13 @@ func sum(_ int1: Int, _ int2: Int) -> Int {
 let result = sum(1, 3) // 4
 
 
+
 //外部引数あり
 func sum2(int1: Int, int2: Int) -> Int {
     return int1 + int2
 }
 let result2 = sum2(int1: 1, int2: 3) // 4
+
 
 
 //デフォルト引数
@@ -39,12 +41,14 @@ greet() // Hello,Anonymous!
 greet(user: "tanaka") // Hello,tanaka!
 
 
+
 //必要のない引数はデフォルト引数で指定し、引数を渡さなくても処理できる
 func search(byQuery query: String, sortKey: String = "id", ascending: Bool = false) -> [Int] {
     return [1,2,3]
 }
 search(byQuery: "query") // [1,2,3]
 search(byQuery: "query", sortKey: "name", ascending: true) // [1,2,3]
+
 
 
 //インアウト引数  関数の実行後に関数内で処理した変数への変更が関数外の変数へ反映される
@@ -57,6 +61,7 @@ func greet2(user: inout String) {
 var userA: String = ""
 greet2(user: &userA) //Hello,Anonymous!!
 print(userA) // Anonymous
+
 
 
 //　可変長引数　引数にString...とすることで引数を任意に追加できる
@@ -74,6 +79,7 @@ func printString(strings: String...) {
 printString(strings: "abc","2","afafa") // first abcelement: abc element: 2 element: afafa
 
 
+
 // 暗黙的なreturn　 1行だけならreturnを省略できる
 func makeMessage(toUser user: String) -> String {
     "hello, \(user)"
@@ -87,6 +93,7 @@ func makeMessage2(toUser user: String) -> String {
 }
 
 
+
 //クロージャ　スコープ内の変数や定数を保持したひとまとまりの処理
 let double2 = { (x: Int) -> Int in
     return x * 2
@@ -95,6 +102,7 @@ double2(3) // 6
 
 let closure: (Int) -> Int
 func someFunc(x: (Int) -> Int) {}
+
 
 
 //型推論 クロージャの引数と戻り値の方宣言はクロージャの代入先の方から推論することで省略できる
@@ -113,6 +121,7 @@ closure2 = { String in
 closure2("fda") // 3
 
 
+
 //クロージャは外部引数名とデフォルト引数を使用できないが簡略引数名を使用できる
 //簡略引数名 $に引数のインデックスをつけた$0,$1などです　可読性の低いコードになりがちだがシンプルな処理を行う場合には積極的に利用すべき
 let isEqual: (Int,Int) -> Bool = {
@@ -122,11 +131,13 @@ isEqual(2,2) // true
 isEqual(1,2) // false
 
 
+
 //戻り値がない関数を定義できるようにクロージャも定義できる
 let emptyReturn: () -> Void = {}
 let singleReturn: () -> Int = {
     return 1
 }
+
 
 
 //クロージャによる変数と定数のキャプチャ クロージャが参照している変数や定数はクロージャが実行されるスコープが変数や定数が定義されたスコープ外であっても
@@ -140,6 +151,7 @@ do {
 }
 greeting("ishikawa") //hello,Ishikawa!
 //symbol コンパイルエラー
+
 
 //定数greetingはdo文のスコープ外で宣言されているためdo文外からも利用できるが定数symbolはdo内で宣言されているためdo外では使用できない
 //しかし定数greetingに代入されたクロージャは内部でsymbolを利用しているにも関わらずdo文外で実行できている。これはクロージャがキャプチャによって
@@ -166,7 +178,7 @@ counter() // 2
 //関数呼び出し時に実行する文
 //}
 
-// or(_:_:)関数の第二引数の方はautoclosure属性のクロージャ
+// or(_:_:)関数の第二引数の方はautoclosure属性のクロージャ 遅延評価を実現するためのクロージャ
 func or (_ lhs: Bool, _ rhs: @autoclosure () -> Bool) -> Bool {
     if lhs {
         return true
@@ -175,6 +187,8 @@ func or (_ lhs: Bool, _ rhs: @autoclosure () -> Bool) -> Bool {
     }
 }
 or(true,false) // true
+
+
 
 //escaping属性 非同期的に実行されるクロージャ 関数に引数として渡されたクロージャが関数のスコープ外で保持される可能性があることを示す属性
 //コンパイラはescaping属性の有無によってクロージャがキャプチャを行う必要があるかを判別する。
@@ -263,13 +277,14 @@ or5(lhs(), rhs()) // lhs実行　true
 //このようにautoclosureを仕様すれば遅延評価を簡単に実現できる
 
 
+
 //トレイリングクロージャ 引数のクロージャを()の外に記述する記法
 //関数の最後の引数がクロージャの場合にクロージャを()の外に書くことができる記法
 func execute(parameter: Int, handler: (String) -> Void) {
     handler("paramete is \(parameter)")
 }
 
-//トレイリングクロージャを使用する場合
+//トレイリングクロージャを使用しない場合
 execute(parameter: 1, handler: { string in
     print(string)  //paramete is 1
 })
