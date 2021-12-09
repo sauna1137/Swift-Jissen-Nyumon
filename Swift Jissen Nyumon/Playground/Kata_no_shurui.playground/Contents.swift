@@ -90,11 +90,11 @@ struct Article {
     var body: String
 
     //以下と同等のイニシャライザが自動的に定義される
-//    init(id: Int,title: String,body: String) {
-//        self.id = id
-//        self.title = title
-//        self.body = body
-//    }
+    //    init(id: Int,title: String,body: String) {
+    //        self.id = id
+    //        self.title = title
+    //        self.body = body
+    //    }
 }
 
 let article = Article(id: 1, title: "hello", body: "...")
@@ -135,10 +135,257 @@ class RegisterdUser: User {
         self.name = name
         super.init(id: id)
     }
+
+    override func printProfile() {
+        super.printProfile()
+        print("name \(name)")
+    }
 }
 
 let registerdUser = RegisterdUser(id: 1, name: "Yosuke Ishikawa")
 let id = registerdUser.id
 let message = registerdUser.message
-registerdUser.printProfile()
+registerdUser.printProfile() // id 1 message:hello  name yosuke Ishikawa
+
+
+
+//final class　継承とオーバーライドの禁止
+class SuperCloass {
+    func overridableMethod() {}
+    final func finalMethod() {}
+}
+
+class SubClass: SuperCloass {
+    override func overridableMethod() {} // オーバーライド可能
+    //    override func finalMethod() {}   オーバライド不可
+}
+
+class InheritableClass {}
+class ValidSubClass: InheritableClass {}
+final class FinalClass {}
+//class InvalidSubClass: FinalClass {}  オーバーライド不可
+
+
+
+//クラスプロパティ　　これらはオーバーライドできる　スタティックはできない
+class A {
+    class var className: String {
+        return "A"
+    }
+}
+
+class B: A {  //オーバーライド
+    override class var className: String {
+        return "B"
+    }
+}
+
+A.className //A
+B.className //B
+
+
+
+//クラスメソッド　クラスに紐付くメソッド インスタンスに依存しない処理を実装する際に利用
+class A2 {
+    class func inheritanceHierarchy() -> String {
+        return "A"
+    }
+}
+
+class B2: A2 {
+    override class func inheritanceHierarchy() -> String {
+        return super.inheritanceHierarchy() + "<-B"
+    }
+}
+
+class C2: B2 {
+    override class func inheritanceHierarchy() -> String {
+        return super.inheritanceHierarchy() + "<-C"
+    }
+}
+
+A2.inheritanceHierarchy() //"A"
+B2.inheritanceHierarchy() //"A<-B"
+C2.inheritanceHierarchy() //"A<-B<-C"
+
+
+
+//指定イニシャライザ　 クラスの主となるイニシャライザ　全てのストアドプロパティが初期化される必要がある
+class Mail {
+    let from: String
+    let to: String
+    let title: String
+
+    //指定イニシャライザ
+    init(from: String, to: String, title:String) {
+        self.from = from
+        self.to = to
+        self.title = title
+    }
+}
+
+
+
+//コンビニエンスイニシャライザ　指定イニシャライザをラップする　中継して内部で引数を組み立てて指定イニシャライザを呼び出す
+//最終的に同一クラスの指定イニシャライザを呼ぶ
+class Mail2 {
+    let from: String
+    let to: String
+    let title: String
+
+    init(from: String, to: String, title:String) {
+        self.from = from
+        self.to = to
+        self.title = title
+    }
+
+    convenience init(from: String, to: String) {
+        self.init(from: from, to: to, title: "Hello,\(from)")
+    }
+}
+
+var mail2 = Mail2(from: "yosuke", to: "ishikawa")
+print(mail2.from,mail2.to,mail2.title)  //yosuke ishikawa Hello,yosuke
+
+
+//デフォルトイニシャライザ
+class defaultInit {
+    let id = 0
+    let name = "Taro"
+
+    //以下と同等のイニシャライザが自動で定義される
+    //    init() {}
+}
+
+let user = defaultInit()
+
+// class defaultInit2 { 初期化する手段がないためコンパ入れラー
+//    let id: Int
+//    let name: String
+// }
+
+
+
+//デイニシャライザ　インスタンスの終了処理　ARC(automatic reference counting)によってインスタンスが破棄されるタイミングで実行される
+class deInit {
+    deinit{
+        //クリーンアップなどの処理
+    }
+}
+
+
+//参照型の比較 　参照先自体の比較は===で行う
+class SomeClass: Equatable {
+    static func ==(lhs: SomeClass, rhs: SomeClass) -> Bool {
+        return true
+    }
+}
+
+let a4 = SomeClass()
+let b4 = SomeClass()
+let c4 = a4
+
+a4 == b4 // true
+a4 === b4 // false
+a4 === c4 // true
+
+
+
+//列挙型　複数の識別子をまとめる型
+enum Weekday {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+}
+
+let sunday = Weekday.sunday // sunday
+let monday = Weekday.monday // monday
+
+
+enum Weekday2 {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+
+    init?(japaneseName: String) {
+        switch japaneseName {
+        case "日": self = .sunday
+        case "月": self = .monday
+        case "火": self = .tuesday
+        case "水": self = .wednesday
+        case "木": self = .thursday
+        case "金": self = .friday
+        case "土": self = .saturday
+        default: return nil
+        }
+    }
+}
+
+let sunday2 = Weekday2(japaneseName: "日") // sunday
+let monday2 = Weekday2(japaneseName: "月") // monday
+
+
+//ローバリュー　実態の定義　列挙型のケースにそれぞれ対応する値を設定できる
+//enum lawValue: Any {
+//    case a = ローバリュー1
+//    case b = ローバリュー2
+//}
+
+enum Symbol: Character {
+case sharp = "#"
+case doller = "$"
+case percent = "%"
+}
+
+let symbol = Symbol(rawValue: "#")  // sharp
+let character = symbol?.rawValue //#
+
+
+//ローバリューのデフォルト値　最初のケースが0でそれ以降は前のケースに1を足した値　String型はケース名のまま文字列表示
+enum Option: Int {
+case none
+case one
+case two
+case undefined = 999
+}
+
+Option.none.rawValue // 0
+Option.one.rawValue // 1
+Option.two.rawValue // 2
+Option.undefined.rawValue // 999
+
+
+
+//連想型　付加情報の付与　列挙型のインスタンスは連想型という付加情報を持たせることもできる
+enum Color3 {
+    case rgb(Float,Float,Float)
+    case cmyk(Float,Float,Float,Float)
+}
+
+let rgb = Color3.rgb(0.0, 0.33, 0.66)
+let cmyk = Color3.cmyk(0.0, 0.33, 0.66, 0.99)
+
+switch rgb {
+case .rgb(let r, let g, let b): print("rgb")
+case .cmyk(let c, let m, let y, let k): print("cmyk")
+}
+
+
+//Caselterableプロトコル　要素列挙のプロトコル　CaseIterableプロトコルへの準拠を宣言するとallCasesが追加され、すべての要素を返せる
+enum Fruit: CaseIterable {
+case peach, apple, grape
+}
+
+Fruit.allCases  // [peach, apple, grape]
+
+
+
 
