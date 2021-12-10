@@ -155,7 +155,7 @@ struct StructH: Mutating {
     }
     func someMethod() {
         //スコープ内の値を変更できない
-//        num = 1 コンパイルエラー
+        //        num = 1 コンパイルエラー
     }
 }
 
@@ -392,3 +392,56 @@ print(book.description)  //商品名: Swift実践入門,　カテゴリ: 書籍
 
 
 //デフォルト実装による実装の任意化
+protocol Item2 {
+    var name: String { get }
+    var caution: String? { get }
+}
+
+extension Item2 {
+    var caution: String? {  //extensionでデフォルト実装
+        return nil
+    }
+
+    var description: String {
+        var decription = "商品名: \(name)"
+        if let caution = caution {
+            decription += ",注意事項 :\(caution)"
+        }
+        return decription
+    }
+}
+
+struct Book2: Item2 {
+    let name: String
+}
+
+struct Fish: Item2 {
+    let name: String
+
+    var caution: String? {
+        return "クール便での配送となります"
+    }
+}
+
+let book2 = Book2(name: "Swift実践入門")
+print(book.description)  // 商品名: Swift実践入門,　カテゴリ: 書籍
+
+let fish = Fish(name: "さんま")
+print(fish.description) // 商品名: さんま,注意事項 :クール便での配送となります
+
+
+
+//型制約の追加　プロトコルエクステンションでwhere節内に記述
+extension Collection where Element == Int {
+    var sum: Int {
+        return reduce(0) { return $0 + $1 }
+    }
+}
+
+let integ = [1, 2, 3]
+integ.sum  // 6
+
+let strin = ["a", "b", "c"]
+//strin.sum コンパイルエラー
+
+
