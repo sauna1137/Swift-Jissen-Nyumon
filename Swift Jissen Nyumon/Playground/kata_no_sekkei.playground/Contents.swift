@@ -90,8 +90,3 @@ class WildEagle2: Animal2 { }
 let dog = Dog2()
 dog.owner = "Yusei Nishiyama"
 // Yusei Nishiyama was assigned as the owner
-
-
-
-
-//オプショナル型の利用指針
