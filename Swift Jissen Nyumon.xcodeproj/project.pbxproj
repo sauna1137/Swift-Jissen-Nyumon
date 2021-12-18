@@ -27,6 +27,7 @@
 		8A7AAD2D2765848300E7E58D /* Generics.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Generics.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2E2765D52900E7E58D /* kata_no_sekkei.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = kata_no_sekkei.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2F27663C9F00E7E58D /* Event-notice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Event-notice.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8A7AAE4B276D9DAC00E7E58D /* Hidouki_syori.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Hidouki_syori.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A9B7966275B48A8004542ED /* Kansu_to_closure.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Kansu_to_closure.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A9B799D275FA4DD004542ED /* katano_kosei_yoso.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = katano_kosei_yoso.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A9B79A02760FB95004542ED /* Kata_no_shurui.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Kata_no_shurui.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -68,6 +69,7 @@
 				8A7AAD2D2765848300E7E58D /* Generics.playground */,
 				8A7AAD2E2765D52900E7E58D /* kata_no_sekkei.playground */,
 				8A7AAD2F27663C9F00E7E58D /* Event-notice.playground */,
+				8A7AAE4B276D9DAC00E7E58D /* Hidouki_syori.playground */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
