@@ -9,7 +9,7 @@ import Foundation
 
 class HomeModel {
 
-    static let homeTableViewTitlesArray = ["変数と定数と式", "基本的な型","コレクションを表す型","制御構文","関数とクロージャ","型の構成要素","型の種類","プロトコル","型の設計指針","イベント通知","非同期処理"]
+    static let homeTableViewTitlesArray = ["変数と定数と式", "基本的な型","コレクションを表す型","制御構文","関数とクロージャ","型の構成要素","型の種類","プロトコル","型の設計指針","イベント通知","非同期処理","エラー処理"]
 
     static let contentsArray = [
 
@@ -2737,8 +2737,6 @@ func runAsynchronousTask(handler: @escaping (Int) -> Void) {
 runAsynchronousTask { result in
     print(result) // 5000050000
 }
-
-
 
 """
 
