@@ -1,5 +1,6 @@
 import UIKit
 import Foundation
+import Darwin
 
 // エラー処理
 // エラー処理にはOptional<Wrapped>、Result<Success,Failure>型、do catch文によるエラー処理がある
@@ -118,3 +119,152 @@ case let .failure(error):
 
 
 // do-catch文
+// do-catch文によるエラー処理ではエラーが発生する可能性のある処理をdo節内に記述
+// catch節へプログラムの制御が移り、エラーの詳細情報にアクセスすることができる
+
+do {
+    // throw文によるエラーが発生する可能性のある処理
+} catch {
+    //　エラー処理
+    // 定数errorを通じてエラー値にアクセス
+}
+
+
+
+
+struct SomeError: Error {}
+
+do {
+    throw SomeError()
+    print("success")
+} catch {
+    print("failure: \(error)")
+}
+
+// 結果: failure: SomeError()
+
+
+
+
+enum SomeError2: Error {
+case error1
+case error2(reason: String)
+}
+
+do {
+    throw SomeError2.error2(reason: "何かがおかしい")
+} catch SomeError2.error1 {
+    print("error1")
+} catch SomeError2.error2(let reason) {
+    print("error2 \(reason)")
+} catch {
+    print("unknownError")
+}
+
+// 結果: error2 何かがおかしい
+
+
+
+// Errorプロトコル エラー情報を表現するプロトコル
+// throw分のエラーを表現する方はErrorプロトコルに準拠している必要がある
+// Errorプロトコルに準拠する方は列挙型として定義することが一般的で網羅的に記述できる
+
+enum DatabaseError2: Error {
+    case entryNotFound
+    case duplicatedEntry
+    case invalidEntry
+}
+
+enum NetworkError: Error {
+    case timeout
+    case cancelled
+}
+
+
+
+// throwsキーワード throwsを追加するとdo-catchを用いずにthrow文によるエラーを発生させられる
+// func 関数名(引数) throws -> 戻り値 {
+//    throw 文によるエラーが発生する可能性のある処理
+// }
+
+enum OperationError: Error {
+    case overCapacity
+}
+
+// retrunの値がInt.maxの三分の一よりも大きいとキャパを超えるためエラーをはく
+func triple(of int: Int) throws -> Int {
+    guard int <= Int.max / 3 else {
+        throw OperationError.overCapacity
+    }
+    return int * 3
+}
+
+
+
+// イニシャライザの引数ageが13~19でなければエラーを出しインスタンス化できなくする
+enum AgeError: Error {
+    case outOfRange
+}
+
+struct Teenager {
+    let age: Int
+
+    init(age: Int) throws {
+        guard case 13...19 = age else {
+            throw AgeError.outOfRange
+        }
+        self.age = age
+    }
+}
+
+
+
+// rethrows 関数やメソッドをrethrowsを指定して定義することで引数のクロージャが発せさせるエラーを関数の呼び出し元に伝播させることができる
+
+struct SomeError3: Error {}
+
+func rethorwingFunction(_ throwingClosure: () throws -> Void) rethrows {
+    try throwingClosure()
+}
+
+do {
+    try rethorwingFunction {
+        throw SomeError()
+    }
+} catch {
+    // 引数のクロージャが発生させるエラーを関数の呼び出し元で処理
+    error // SomeError
+}
+
+
+
+// tryキーワード　エラーを発生させる可能性のある処理の実行
+// throws指定された処理を呼び出すには try 関数名(引数)のように記述する
+// do-catchのthrowsが指定された処理の内部でのみ使用できる
+
+enum OperationError2: Error {
+    case overCapacity
+}
+
+func triple2(of int: Int) throws -> Int {
+    guard int <= Int.max / 3 else {
+        throw OperationError.overCapacity
+    }
+    return int * 3
+}
+
+let int = Int.max
+
+do {
+    let tripleOfInt = try triple(of: int)
+    print("success \(tripleOfInt)")
+} catch {
+    print("Error \(error)")
+}
+
+// 結果: Error overCapacity
+
+
+
+// try! キーワード エラーを無視した処理の実行
+
