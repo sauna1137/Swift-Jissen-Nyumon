@@ -267,4 +267,23 @@ do {
 
 
 // try! キーワード エラーを無視した処理の実行
+// 特定の場面では絶対にエラーが発生しないとわかっていてエラー処理を記述したくないケースに用いる
+// 結果としてプログラム全体の信頼性は下がってしまうが実用性のある機能
+
+let tripleInt = try! triple2(of: 30)
+
+
+
+// try? エラーをOptional<Wrapped>型で表す処理
+// do-catch文を省略でき、代わりに関数の戻り値がOptional<Wrapped>型となる
+// 失敗可能イニシャライザのように扱うこともできる
+
+if let tripleInt2 = try? triple2(of: 9) {
+    print(tripleInt2)
+}
+
+
+
+// defer文によるエラーの有無に関わらない処理の実行
+
 
