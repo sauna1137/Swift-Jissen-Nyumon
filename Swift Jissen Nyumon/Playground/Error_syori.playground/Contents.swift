@@ -147,8 +147,8 @@ do {
 
 
 enum SomeError2: Error {
-case error1
-case error2(reason: String)
+    case error1
+    case error2(reason: String)
 }
 
 do {
@@ -176,8 +176,8 @@ enum DatabaseError2: Error {
 }
 
 enum NetworkError: Error {
-    case timeout
-    case cancelled
+case timeout
+case cancelled
 }
 
 
@@ -188,7 +188,7 @@ enum NetworkError: Error {
 // }
 
 enum OperationError: Error {
-    case overCapacity
+case overCapacity
 }
 
 // retrunの値がInt.maxの三分の一よりも大きいとキャパを超えるためエラーをはく
@@ -203,7 +203,7 @@ func triple(of int: Int) throws -> Int {
 
 // イニシャライザの引数ageが13~19でなければエラーを出しインスタンス化できなくする
 enum AgeError: Error {
-    case outOfRange
+case outOfRange
 }
 
 struct Teenager {
@@ -243,7 +243,7 @@ do {
 // do-catchのthrowsが指定された処理の内部でのみ使用できる
 
 enum OperationError2: Error {
-    case overCapacity
+case overCapacity
 }
 
 func triple2(of int: Int) throws -> Int {
@@ -285,5 +285,144 @@ if let tripleInt2 = try? triple2(of: 9) {
 
 
 // defer文によるエラーの有無に関わらない処理の実行
+func someFunction() {
+    print("Do something")
+}
+
+func cleanUP() {
+    print("CleanUp")
+}
+
+do {
+    defer {
+        // do節を抜けるとタイミングで実行される
+        cleanUP()
+    }
+    try someFunction()
+} catch {
+    print("Error \(error)")
+}
+
+
+
+// 連続したエラーのまとめて扱う
+enum DatabaseError3: Error {
+    case entryNotFound
+    case duplicatedEntry
+    case invalidEntry(reason: String)
+}
+
+struct User3 {
+    let id: Int
+    let name: String
+    let email: String
+}
+
+func findUser3(byID id: Int) -> Result<User3, DatabaseError3> {
+    let users = [
+        User3(id: 1, name: "Yusei", email: "nfsdofa@ex.com"),
+        User3(id: 2, name: "tanaka", email: "jfdla@ex.com")
+    ]
+
+    for user in users {
+        if user.id == id {
+            return .success(user)
+        }
+    }
+    return .failure(.entryNotFound)
+}
+
+func localPart(fromEmail email: String) -> Result<String, DatabaseError3> {
+    let components = email.components(separatedBy: "@")
+    guard components.count == 2 else {
+        return .failure(.invalidEntry(reason: "Invalid email address"))
+    }
+    return .success(components[0])
+}
+
+let userID = 1
+
+switch findUser3(byID: userID) {
+case .success(let user):
+    switch localPart(fromEmail: user.email) {
+    case .success(let localPart):
+        print("Local part: \(localPart)")
+    case .failure(let error):
+        print("Error \(error)")
+    }
+case .failure(let error):
+    print("Error \(error)")
+}
+
+// 結果: Local part: nfsdofa
+
+
+
+
+// fatalError() プログラムの終了
+// その箇所が実行されること自体が想定外であることを宣言するための関数
+//fatalError("想定しないエラーが発生したためプログラムを終了します")
+
+
+
+// Never型 値を返さないことを示す型
+// fatalError()関数の戻り値の型は値を返さないことを示すNever型という特殊な型 その箇所以降の処理は実行されないため戻り値を返す必要がない
+func randumInt() -> Int {
+    fatalError("まだ実装されていません")
+}
+
+
+func title(forButtonAt index: Int) -> String {
+    // ケースがInt型の値を網羅できないとコンパイルエラー
+    //    switch index {
+    //    case 0: return "赤"
+    //    case 1: return "青"
+    //    case 2: return "黄"
+    //    }
+    return "a"
+}
+
+func title2(forButtonAt index: Int) -> String {
+    switch index {
+    case 0: return "a"
+    case 1: return "b"
+    case 2: return "c"
+    default: fatalError("想定外のボタンのインデックスを受け取りました")
+    }
+}
+
+
+
+
+// アサーションによるデバッグ時のプログラム終了
+// プログラムがある時点で満たしているべき条件を記述するための機能で条件が満たされていない場合はプログラムの実行を終了する
+// リリース時は実行は継続し終了しない
+func format(minute: Int, second: Int) -> String {
+    assert(second < 60, "secondは60未満に設定してください")
+    return "\(minute)分 \(second)秒"
+}
+
+
+func printSeason(forMonth month: Int) {
+    switch month {
+    case 1...2, 12: print("冬")
+    case 3...5: print("春")
+    case 6...8: print("夏")
+    case 9...11: print("冬")
+    default: assertionFailure("monthには1から12までの値を設定してください")
+    }
+}
+
+printSeason(forMonth: 11)
+printSeason(forMonth: 12)
+//printSeason(forMonth: 13) // error
+
+
+// エラー処理の使い分け
+// Optional<Wrapped>　エラーの詳細情報が不要で結果の成否のみによってエラーを扱える場合
+// Result<Success, Failure>　非同期処理の場合
+// do-catch 動機処理の場合
+// fatalError(_:)　エラー発生時にプログラムの実行を終了したい場合
+// アサーション デバック時のみ エラー発生時にプログラムを終了したい場合
 
 
