@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A146CB42778959100220F40 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A146CB32778959100220F40 /* Temperature.swift */; };
+		8A146CBE2778A66100220F40 /* Swift_Jissen_NyumonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A146CBD2778A66100220F40 /* Swift_Jissen_NyumonTests.swift */; };
 		8ADAC37A274C9CB300C3AD12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */; };
 		8ADAC37C274C9CB300C3AD12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */; };
 		8ADAC383274C9CB500C3AD12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADAC382274C9CB500C3AD12 /* Assets.xcassets */; };
@@ -22,8 +24,21 @@
 		8ADAC3A4274CC72E00C3AD12 /* UITableView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAC3A3274CC72D00C3AD12 /* UITableView-Extension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A146CBF2778A66100220F40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8ADAC36E274C9CB300C3AD12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8ADAC375274C9CB300C3AD12;
+			remoteInfo = "Swift Jissen Nyumon";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8A146CB027788A7C00220F40 /* WebSerbice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = WebSerbice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8A146CB32778959100220F40 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		8A146CBB2778A66000220F40 /* Swift Jissen NyumonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift Jissen NyumonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A146CBD2778A66100220F40 /* Swift_Jissen_NyumonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Jissen_NyumonTests.swift; sourceTree = "<group>"; };
 		8A7AAD2A2762F5AE00E7E58D /* Protocol.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Protocol.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2D2765848300E7E58D /* Generics.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Generics.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2E2765D52900E7E58D /* kata_no_sekkei.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = kata_no_sekkei.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -51,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8A146CB82778A66000220F40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADAC373274C9CB300C3AD12 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +83,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A146CB22778957100220F40 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				8A146CB32778959100220F40 /* Temperature.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		8A146CBC2778A66100220F40 /* Swift Jissen NyumonTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A146CBD2778A66100220F40 /* Swift_Jissen_NyumonTests.swift */,
+			);
+			path = "Swift Jissen NyumonTests";
+			sourceTree = "<group>";
+		};
 		8A9B7998275DE54F004542ED /* Playground */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAC378274C9CB300C3AD12 /* Swift Jissen Nyumon */,
+				8A146CBC2778A66100220F40 /* Swift Jissen NyumonTests */,
 				8ADAC377274C9CB300C3AD12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADAC376274C9CB300C3AD12 /* Swift Jissen Nyumon.app */,
+				8A146CBB2778A66000220F40 /* Swift Jissen NyumonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +139,7 @@
 			children = (
 				8ADAC379274C9CB300C3AD12 /* AppDelegate.swift */,
 				8ADAC37B274C9CB300C3AD12 /* SceneDelegate.swift */,
+				8A146CB22778957100220F40 /* Test */,
 				8A9B7998275DE54F004542ED /* Playground */,
 				8ADAC390274C9D3800C3AD12 /* Model */,
 				8ADAC391274C9D3F00C3AD12 /* View */,
@@ -167,6 +208,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8A146CBA2778A66000220F40 /* Swift Jissen NyumonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A146CC12778A66100220F40 /* Build configuration list for PBXNativeTarget "Swift Jissen NyumonTests" */;
+			buildPhases = (
+				8A146CB72778A66000220F40 /* Sources */,
+				8A146CB82778A66000220F40 /* Frameworks */,
+				8A146CB92778A66000220F40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A146CC02778A66100220F40 /* PBXTargetDependency */,
+			);
+			name = "Swift Jissen NyumonTests";
+			productName = "Swift Jissen NyumonTests";
+			productReference = 8A146CBB2778A66000220F40 /* Swift Jissen NyumonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8ADAC375274C9CB300C3AD12 /* Swift Jissen Nyumon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8ADAC38A274C9CB500C3AD12 /* Build configuration list for PBXNativeTarget "Swift Jissen Nyumon" */;
@@ -194,6 +253,10 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					8A146CBA2778A66000220F40 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 8ADAC375274C9CB300C3AD12;
+					};
 					8ADAC375274C9CB300C3AD12 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -213,11 +276,19 @@
 			projectRoot = "";
 			targets = (
 				8ADAC375274C9CB300C3AD12 /* Swift Jissen Nyumon */,
+				8A146CBA2778A66000220F40 /* Swift Jissen NyumonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8A146CB92778A66000220F40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADAC374274C9CB300C3AD12 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,12 +304,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8A146CB72778A66000220F40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A146CBE2778A66100220F40 /* Swift_Jissen_NyumonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ADAC372274C9CB300C3AD12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8ADAC395274C9E6A00C3AD12 /* HomeModel.swift in Sources */,
 				8ADAC3A4274CC72E00C3AD12 /* UITableView-Extension.swift in Sources */,
+				8A146CB42778959100220F40 /* Temperature.swift in Sources */,
 				8ADAC399274C9F4F00C3AD12 /* HomeTableViewCell.swift in Sources */,
 				8ADAC37A274C9CB300C3AD12 /* AppDelegate.swift in Sources */,
 				8ADAC3A2274CA64500C3AD12 /* UIStoryboard-Extension.swift in Sources */,
@@ -249,6 +329,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A146CC02778A66100220F40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8ADAC375274C9CB300C3AD12 /* Swift Jissen Nyumon */;
+			targetProxy = 8A146CBF2778A66100220F40 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8ADAC384274C9CB500C3AD12 /* LaunchScreen.storyboard */ = {
@@ -262,6 +350,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8A146CC22778A66100220F40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 827H72CABH;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.koichi.Swift-Jissen-NyumonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Jissen Nyumon.app/Swift Jissen Nyumon";
+			};
+			name = Debug;
+		};
+		8A146CC32778A66100220F40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 827H72CABH;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.koichi.Swift-Jissen-NyumonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift Jissen Nyumon.app/Swift Jissen Nyumon";
+			};
+			name = Release;
+		};
 		8ADAC388274C9CB500C3AD12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -437,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8A146CC12778A66100220F40 /* Build configuration list for PBXNativeTarget "Swift Jissen NyumonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A146CC22778A66100220F40 /* Debug */,
+				8A146CC32778A66100220F40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8ADAC371274C9CB300C3AD12 /* Build configuration list for PBXProject "Swift Jissen Nyumon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
