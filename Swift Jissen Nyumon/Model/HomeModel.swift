@@ -2774,13 +2774,13 @@ runAsynchronousTask { result in
         return nil
     }
 
-    // id 1 print("name \(user.name)")
+    // id 1 print("name (user.name)")
     // id 0 print("Error User not found")
 
 
     let id = 1
     if let user = findUser(byID: id) {
-        print("name \(user.name)")
+        print("name (user.name)")
     } else {
         print("Error User not found")
     }
@@ -2806,7 +2806,7 @@ runAsynchronousTask { result in
 
 
     if let user2 = User2(id: 0, name: "Yosuke", email: "ishikawa.ex.com") {
-        print("Username \(user2.name)")
+        print("Username (user2.name)")
     } else {
         print("Error Invalid data")
     }
@@ -2849,12 +2849,12 @@ runAsynchronousTask { result in
     let result = findUser2(byID: id2)
 
     switch result {
-    case let .success(User): print(".success: \(User.name)")
+    case let .success(User): print(".success: (User.name)")
     case let .failure(error):
         switch error {
         case .entryNotFound: print(".failure: .entryNotFound")
         case .duplicatedEntry: print(".failure: .duplicatedEntry")
-        case .invalidEntry(reason: let reason): print(".failure .invalidEntry(\(reason)")
+        case .invalidEntry(reason: let reason): print(".failure .invalidEntry((reason)")
         }
     }
     // 結果: .failure: .entryNotFound
@@ -2881,7 +2881,7 @@ runAsynchronousTask { result in
         throw SomeError()
         print("success")
     } catch {
-        print("failure: \(error)")
+        print("failure: (error)")
     }
 
     // 結果: failure: SomeError()
@@ -2899,7 +2899,7 @@ runAsynchronousTask { result in
     } catch SomeError2.error1 {
         print("error1")
     } catch SomeError2.error2(let reason) {
-        print("error2 \(reason)")
+        print("error2 (reason)")
     } catch {
         print("unknownError")
     }
@@ -3000,9 +3000,9 @@ runAsynchronousTask { result in
 
     do {
         let tripleOfInt = try triple(of: int)
-        print("success \(tripleOfInt)")
+        print("success (tripleOfInt)")
     } catch {
-        print("Error \(error)")
+        print("Error (error)")
     }
 
     // 結果: Error overCapacity
@@ -3043,7 +3043,7 @@ runAsynchronousTask { result in
         }
         try someFunction()
     } catch {
-        print("Error \(error)")
+        print("Error (error)")
     }
 
 
@@ -3089,12 +3089,12 @@ runAsynchronousTask { result in
     case .success(let user):
         switch localPart(fromEmail: user.email) {
         case .success(let localPart):
-            print("Local part: \(localPart)")
+            print("Local part: (localPart)")
         case .failure(let error):
-            print("Error \(error)")
+            print("Error (error)")
         }
     case .failure(let error):
-        print("Error \(error)")
+        print("Error (error)")
     }
 
     // 結果: Local part: nfsdofa
@@ -3142,7 +3142,7 @@ runAsynchronousTask { result in
     // リリース時は実行は継続し終了しない
     func format(minute: Int, second: Int) -> String {
         assert(second < 60, "secondは60未満に設定してください")
-        return "\(minute)分 \(second)秒"
+        return "(minute)分 (second)秒"
     }
 
 
