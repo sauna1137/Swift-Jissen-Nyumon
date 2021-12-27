@@ -39,6 +39,7 @@
 		8A146CB32778959100220F40 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		8A146CBB2778A66000220F40 /* Swift Jissen NyumonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift Jissen NyumonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A146CBD2778A66100220F40 /* Swift_Jissen_NyumonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Jissen_NyumonTests.swift; sourceTree = "<group>"; };
+		8A146CC42778BC1B00220F40 /* JissenSwiftApp.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = JissenSwiftApp.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2A2762F5AE00E7E58D /* Protocol.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Protocol.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2D2765848300E7E58D /* Generics.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Generics.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A7AAD2E2765D52900E7E58D /* kata_no_sekkei.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = kata_no_sekkei.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -112,6 +113,7 @@
 				8A7AAE4B276D9DAC00E7E58D /* Hidouki_syori.playground */,
 				8A7AAE502771B5DC00E7E58D /* Error_syori.playground */,
 				8A146CB027788A7C00220F40 /* WebSerbice.playground */,
+				8A146CC42778BC1B00220F40 /* JissenSwiftApp.playground */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
